@@ -5,12 +5,14 @@ mydb = mysql.connector.connect(
   port="3306",
   user="root",
   password="kjuhstlncp",
-  database="database_4"
+  database="store_cms_plusplus"
 )
 
 mycursor = mydb.cursor()
 
-mycursor.execute("SELECT * FROM student;")
+screen_resolution = input("Nhập type: ")
+
+mycursor.execute("SELECT * FROM store_cms_plusplus.laptop WHERE screen_resolution LIKE" + "'%" + screen_resolution + "%';")
 
 myresult = mycursor.fetchall()
 

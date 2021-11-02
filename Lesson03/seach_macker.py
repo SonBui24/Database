@@ -5,12 +5,14 @@ mydb = mysql.connector.connect(
   port="3306",
   user="root",
   password="kjuhstlncp",
-  database="database_4"
+  database="store_cms_plusplus"
 )
 
 mycursor = mydb.cursor()
 
-mycursor.execute("SELECT * FROM student;")
+maker = input("Nhập maker: ")
+
+mycursor.execute("SELECT * FROM store_cms_plusplus.laptop WHERE maker LIKE" + "'%" + maker + "%';")
 
 myresult = mycursor.fetchall()
 
