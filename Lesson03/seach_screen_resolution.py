@@ -10,7 +10,7 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-screen_resolution = input("Nhập type: ")
+screen_resolution = input("Nhập screen resolution: ")
 
 mycursor.execute("SELECT * FROM store_cms_plusplus.laptop WHERE screen_resolution LIKE" + "'%" + screen_resolution + "%';")
 

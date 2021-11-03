@@ -8,10 +8,10 @@ mydb = mysql.connector.connect(
   database="store_cms_plusplus"
 )
 
+mycursor = mydb.cursor()
+
 lowest_price = input("Giá từ: ")
 highest_price = input("Đến: ")
-
-mycursor = mydb.cursor()
 
 mycursor.execute("SELECT * FROM store_cms_plusplus.laptop WHERE price BETWEEN " + lowest_price + " AND " + highest_price + ";")
 
