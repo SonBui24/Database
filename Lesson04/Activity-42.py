@@ -10,6 +10,11 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
+class Counter:
+  def __init__(self, maker, quantity):
+    self.maker = maker
+    self.quantity = quantity
+
 def getCounterByMaker():
   mycursor.execute("SELECT maker, COUNT(*) as 'quantity' FROM store_cms_plusplus.laptop GROUP BY maker ORDER BY quantity DESC;")
 
@@ -28,10 +33,5 @@ def display():
     maker = x[0]
     quantity = x[1]
     print(f"Maker: {maker}, Quantity: {quantity}")
-
-class Counter:
-  def __init__(self, maker, quantity):
-    self.maker = maker
-    self.quantity = quantity
     
 display()
