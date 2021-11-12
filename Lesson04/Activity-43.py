@@ -10,11 +10,30 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
+class Statistic:
+    def __init__(self, maker, sold, totalMoney):
+        self.maker = maker
+        self.sold = sold
+        self.totalMoney = totalMoney
+
 def getStatisticByMaker():
     mycursor.execute("SELECT maker, SUM(sold) as 'sold', SUM(sold * price) as 'totalMoney' FROM store_cms_plusplus.laptop GROUP BY maker;")
 
     myresult = mycursor.fetchall()
+    list = []
+    
+    for x in myresult:
+        list.append(x)
+    
+    return list
 
-    return myresult
+def display():
+    list = getStatisticByMaker()
 
-print(getStatisticByMaker())
+    for x in list:
+        maker = x[0]
+        sold = x[1]
+        totalMoney = x[2]
+        print(f"Maker: {maker}, Sold: {sold}, TotalMoney: {totalMoney}")
+
+display()
