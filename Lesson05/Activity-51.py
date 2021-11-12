@@ -18,6 +18,7 @@ def insert_laptop(name, url, maker, type, ram, cpu, ssd, hdd, price, card, scree
 
     mydb.commit()
 
+
 insert_laptop('Laptop ASUS ROG Zephyrus S GX531GM-ES004T (15.6" FHD/i7-8750H/16GB/512GB SSD/GTX 1060/Win10/2.1 kg)', 
 'https://phongvu.vn/may-tinh-xach-tay-laptop-asus-rog-zephyrus-gx531gm-es004t-i7-8750h-s19010009.html', 
 'ASUS', 
@@ -32,3 +33,14 @@ insert_laptop('Laptop ASUS ROG Zephyrus S GX531GM-ES004T (15.6" FHD/i7-8750H/16G
 '15.6',
 '30')
 
+
+def seach_laptop(name):
+  sql = "SELECT * FROM store_cms_plusplus.laptop WHERE name = " + "'" + name + "'" + ";"
+
+  mycursor.execute(sql)
+
+  myresult = mycursor.fetchall()
+  for x in myresult:
+    print(x)
+  
+seach_laptop('Laptop ASUS ROG Zephyrus S GX531GM-ES004T (15.6" FHD/i7-8750H/16GB/512GB SSD/GTX 1060/Win10/2.1 kg)')
